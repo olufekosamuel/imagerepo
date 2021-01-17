@@ -3,6 +3,7 @@ package helpers
 import (
 	"context"
 	"log"
+	"os"
 	"time"
 
 	"github.com/joho/godotenv"
@@ -12,7 +13,7 @@ import (
 
 var (
 	err      = godotenv.Load()
-	mongoUri = "mongodb+srv://samuel123:samuel123@cluster0.fkht5.mongodb.net/<dbname>?retryWrites=true&w=majority"
+	mongoUri = os.Getenv("MONGO_DB")
 	DB, _    = InitDB()
 )
 

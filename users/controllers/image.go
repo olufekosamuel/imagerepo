@@ -20,7 +20,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const MAX_UPLOAD_SIZE = 1024 * 1024 // 1MB
+const MAX_UPLOAD_SIZE = 1024 * 1024 * 20 // 20MB
 /*
 Endpoint to upload image
 */
@@ -77,7 +77,7 @@ func ImageUpload(w http.ResponseWriter, r *http.Request) {
 		for _, fileHeader := range files {
 
 			if fileHeader.Size > MAX_UPLOAD_SIZE {
-				http.Error(w, fmt.Sprintf("The uploaded image is too big: %s. Please use an image less than 1MB in size", fileHeader.Filename), 400)
+				http.Error(w, fmt.Sprintf("The uploaded image is too big: %s. Please use an image less than 20MB in size", fileHeader.Filename), 400)
 				return
 			}
 
